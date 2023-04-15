@@ -26,7 +26,6 @@ boutondroite.addEventListener('click',()=>{
 let listederoulante=document.getElementById('selection')
 //LISTE DE MES ENSEIGNANTS
 let enseignant= ['ALY','BAILA','Ndoye','Mbaye','Djiby','Seckouba']
-
 //document.querySelector('#e').innerHTML=`enseignant.length`
 //LISTE DE MES CLASSSES 
 let classes= ['L2 GLRS A','L2 GLRS B', 'L2 ETSE', 'L1 A','IAGE B','L2 CDSD']
@@ -204,7 +203,7 @@ function creationmodule(a) {
     duree=a.heuref-a.heured
     ml=a.heured-8
 
-    carré.style.width=`${duree*12}%`
+    carré.style.width=`${duree*11}%`
     carré.style.marginLeft=`${ml*11}%`
     return carré
 
@@ -233,7 +232,7 @@ function creationsalle(a) {
 }
 // A REVOIR POUR LA CREATION AUTOMATIQUE DES TRUCS
 //POUR ALY
-//document.querySelector('.lg1').style.display='flex'
+document.querySelector('.lg4').style.display='flex'
 Alypython=creationdiv(info[0])
 Alypython.style.backgroundColor='rgb(255,0,153)'
 Alypython.style.display='none'
@@ -260,7 +259,6 @@ Mbayelc.style.display='none'
 //Pour python
 
 pythonmodule=creationmodule(info[0])
-
 pythonmodule.style.backgroundColor='orange'
 pythonmodule.style.display='none'
 document.querySelector('.lg1').appendChild(pythonmodule)
@@ -664,18 +662,54 @@ document.getElementById('selection').addEventListener('change',(event)=>{
             console.log(info)
            b=creationdiv(d)
            b.style.backgroundColor='teal'
+
+           //POUR LUNDI 
            if (identifiant=='j1'){
-           document.querySelector('.lg1').appendChild(b)}
-           else if (identifiant=='j2'){
+            if ((d.e==info[0].e && d.heured==info[0].heured && d.heuref==info[0].heuref) |(d.e==info[2].e && d.heured==info[2].heured && d.heuref==info[2].heuref) ) {
+                conteneur.style.display='block'
+                entete.innerHTML=`<h3>Modal title: Aly nest pas disponible les lundi entre 9h et 12h</h3>`
+                info.pop(d)
+                console.log(info)
+            }
+            else{
+                document.querySelector('.lg1').appendChild(b)
+            } 
+            }
+            //AJOUT MARDI
+            if (identifiant=='j2'){
             document.querySelector('.lg2').appendChild(b)}
-            else if (identifiant=='j3'){
-                document.querySelector('.lg3').appendChild(b)}
-            else if (identifiant=='j4'){
-                document.querySelector('.lg4').appendChild(b)}
-            else if (identifiant=='j5'){
+
+            // POUR MERCREDI
+            if (identifiant=='j3'){
+                if (d.e==info[1].e && d.heured==info[1].heured && d.heuref==info[1].heuref){
+                conteneur.style.display='block'
+                entete.innerHTML=`<h3>Modal title: Aly nest pas disponible MERCREDI entre 15h et 17h</h3>`
+                info.pop(d)
+                }
+                else{
+                    document.querySelector('.lg3').appendChild(b)
+                }
+                }
+            //POUR JEUDI
+            if (identifiant=='j4'){
+                if(d.e==info[3].e && d.heured==info[3].heured && d.heuref==info[3].heuref) {
+                    conteneur.style.display='block'
+                   entete.style.color='red'
+                    entete.innerHTML=`<h3>Modal title: Mbaye nest pas disponible le Jeudi entre 8h et 10h</h3>`
+                    info.pop(d)
+                }
+                else{
+                    document.querySelector('.lg4').appendChild(b)
+                }
+                }
+            //POUR VENDREDI 
+            if (identifiant=='j5'){
                 document.querySelector('.lg5').appendChild(b)}
-           else if (identifiant=='j6'){
+            //POUR SAMEDI 
+            if (identifiant=='j6'){
                 document.querySelector('.lg6').appendChild(b)}
+
+           
         })
         
 
