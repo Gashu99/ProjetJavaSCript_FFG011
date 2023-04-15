@@ -490,11 +490,13 @@ let conteneur=document.createElement('div')
             monformulaire.style.height='60%'
             let  choixmodule=document.createElement('label')
             choixmodule.innerHTML="<br>MODULE"    
+            let titremod=document.createElement('option')
+            titremod.textContent='choisir un module'
             let meschoixmod=document.createElement('select')
             meschoixmod.id='choixmodule'
             meschoixmod.style.marginLeft='10%'
             meschoixmod.style.width='50%'
-
+            meschoixmod.appendChild(titremod)
             for (let i=0;i<modules.length;i++){
                 let mod = document.createElement('option')
                 mod.text=modules[i]
@@ -506,7 +508,9 @@ let conteneur=document.createElement('div')
             meschoixens.id='choixenseignant'
             meschoixens.style.marginLeft='09%'
             meschoixens.style.width='50%'
-
+            let titreens=document.createElement('option')
+            titreens.textContent='choisir un Enseignant'
+            meschoixens.appendChild(titreens)
             for (let i=0;i<enseignant.length;i++){
                 let ens = document.createElement('option')
                 ens.text=enseignant[i]
@@ -518,6 +522,9 @@ let conteneur=document.createElement('div')
             meschoixsa.id='choixsalle'
             meschoixsa.style.marginLeft='14%'
             meschoixsa.style.width='50%'
+            let titresalle=document.createElement('option')
+            titresalle.textContent='choisir une Salle'
+            meschoixsa.appendChild(titresalle)
 
             for (let i=0;i<salles.length;i++){
                 let sal = document.createElement('option')
@@ -532,7 +539,9 @@ let conteneur=document.createElement('div')
             meschoixhd.id='choixheuredebut'
             meschoixhd.style.marginLeft='07%'
             meschoixhd.style.width='50%'
-
+            let titrehd=document.createElement('option')
+            titrehd.textContent='choisir une heure  de debut'
+            meschoixhd.appendChild(titrehd)
             for (let i=8;i<=16;i++){
                 let heuredebut = document.createElement('option')
         
@@ -546,6 +555,9 @@ let conteneur=document.createElement('div')
             meschoixhf.id='choixheurefin'
             meschoixhf.style.marginLeft='09%'
             meschoixhf.style.width='50%'
+            let titrehf=document.createElement('option')
+            titrehf.textContent='choisir une heure de fin '
+            meschoixhf.appendChild(titrehf)
 
             for (let i=9;i<=17;i++){
                 let heurefin= document.createElement('option')
@@ -659,9 +671,8 @@ document.getElementById('selection').addEventListener('change',(event)=>{
             conteneur.style.display='none'
             d={e:ve,c:nomclasse,m:vm,s:vs,heured:vd,heuref:vf}
             info.push(d)
-            console.log(info)
-           b=creationdiv(d)
-           b.style.backgroundColor='teal'
+            b=creationdiv(d)
+            b.style.backgroundColor='teal'
 
            //POUR LUNDI 
            if (identifiant=='j1'){
